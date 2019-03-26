@@ -4,11 +4,12 @@ var mysql = require('mysql');
 
 //local mysql db connection
 var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'password',
-    database : 'kanso'
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "kanso"
 });
+
 
 connection.connect(function(err) {
     if (err) throw err;

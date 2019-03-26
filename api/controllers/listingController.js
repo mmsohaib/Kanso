@@ -5,10 +5,31 @@ exports.getAllListings = function(req, res) {
         if(err) {
             res.send(err);
         }
+
         console.log('res', listing);
-        res.send(listing);
+        res.send("gooda");
+        // res.render("index");
     });
 };
+
+
+exports.getListingsByLocationAndProperty = function(req, res) {
+    let location = req.query.location;
+    let property = req.query.property;
+    
+    
+
+    Listing.getListingsByLocationAndProperty(location, property, function(err, listing) {
+        if(err) {
+            res.send(err);
+        }
+
+        console.log('res', listing);
+        res.send(listing);
+        // res.render("index");
+    });
+};
+
 
 exports.createListing = function(req, res) {
     var newListing = new Listing(req.body);

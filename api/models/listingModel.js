@@ -49,6 +49,22 @@ Listing.getAllListings = function getAllListings(result) {
     });   
 };
 
+
+Listing.getListingsByLocationAndProperty = function getListingsByLocationAndProperty(location, property, result) {
+    //let query = "SELECT * FROM listings WHERE listing_type = '" + property + "' AND addr LIKE '%" + location + "%'";  //select * image
+    let query = "SELECT * FROM listings WHERE listing_type = ? AND addr LIKE ?";  //select * image
+    sql.query(query, [property, "%" + location + "%"], function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+            result(null, err);
+        }
+        else{
+            console.log('tasks : ', res);  
+            result(null, res);
+        }
+    });   
+};
+
 Listing.updateById = function(id, listing, result){
     sql.query("UPDATE listings SET listing = ? WHERE id = ?", [listing.listing, id], function (err, res) {
         if(err) {

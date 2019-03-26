@@ -1,0 +1,42 @@
+.footer{
+    /* border: 2px solid red; */
+    text-align: center;
+    width: 100%;
+    /* position: fixed; */
+    /* bottom: 0; */
+    /* margin-bottom: 20px; */
+    padding: 50px;
+    background-color: lightblue
+}
+
+.kan{
+    border: 0;
+    height: 55px;
+    background-image: url('../media/kan.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    z-index: 1;
+}
+
+@media screen and (max-width: 1000px){
+    .headline , .content{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .headlinemiddle , .headlineleft, .headlineright, .contentleft, .contentright{
+        width: 100%;
+    }
+    ul {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    ul li{
+        display: block;
+        
+    }
+    
+}

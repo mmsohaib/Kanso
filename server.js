@@ -2,14 +2,15 @@ const express = require('express'),
     app = express(),
     bodyParser = require('body-parser');
     port = process.env.PORT || 3000;
-
+    app.set("view engine", "ejs"); //set ejs as default engine
+    app.use(express.static("public")); //set to public static path .
 
 const mysql = require('mysql');
 // connection configurations
 const conn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password',
+    password: '',
     database: 'kanso'
 });
  

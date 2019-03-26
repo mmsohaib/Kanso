@@ -1,0 +1,119 @@
+.searchbar{
+    position: absolute;
+    left: 30%;
+    top: 50px;
+    /* border: 2px solid red; */
+    width: 499px;
+}
+
+.searchbar ul{
+    
+    background-color: rgb(248, 248, 248);
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    width: 488.5px;
+}
+
+.searchbar ul li{
+    float: left;
+    
+}
+
+.searchbar ul li a{
+    display: block;
+    text-decoration: none;
+    padding: 18px 50px;
+    text-transform: uppercase;
+}
+
+
+.searchbar ul li a:hover{
+    cursor: pointer;
+    background-color: red;
+}
+
+.searchbar ul li a:visited{
+    background-color: red;
+}
+
+.searchbar ul li a:checked{
+    background-color: yellow;
+}
+
+.property{
+    display: block;
+    background-color: rgb(248, 248, 248);
+    padding: 0;
+    margin: 0;
+    width: 410px;
+    margin: auto;
+}
+
+.location{
+    background-color: purple;
+    display: inline-block;
+}
+
+.location input{
+    padding: 10px 15px;
+    font-size: 15px;
+    border: none;
+    background-color: rgb(248, 248, 248);
+    
+}
+
+.type{
+    width: 150px;
+    /* height: 50x; */
+    margin: 0;
+    padding: 0;
+    background-color: rgb(248, 248, 248);
+    display: inline-block;
+    font-size: 8px;
+}
+
+.type select{
+
+    margin-left: 10px;
+    font-size: 20px;
+    border: none;
+    width: 150px;
+    
+
+}
+
+
+.submit{
+    /* width: 100px; */
+    background-color: rgb(248, 248, 248);
+    display: inline-block;
+    left: 20px;
+    top: 5px;
+    position: relative;
+}
+
+ button{
+    float: left;
+    background: #2196F3;
+    color: white;
+    
+    
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+ button:hover {
+    background: #0b7dda;
+  }
+
+ button::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  
