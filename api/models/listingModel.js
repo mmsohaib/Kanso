@@ -50,6 +50,24 @@ Listing.getAllListings = function getAllListings(result) {
 };
 
 
+Listing.getListings = function getListings(listing, result) {
+    address = "%" + listing.city + ", " + listing.state ;
+    let value = [listing.min, listing.max, listing.bedroom, listing.bathroom, address];
+    let query = "SELECT numRooms, numBath, parking, addr, price, listing_type, listing_desc, posted_date, first_name, last_name, email, username, image_path  FROM listings, users WHERE users.u_id = listings.listed_by AND price BETWEEN ? AND ? AND numRooms <= ? AND numBath <= ? AND addr LIKE ?";  //select * image
+    console.log(query);
+    console.log(value);
+    sql.query(query, value, function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+            result(null, err);
+        }
+        else{
+            console.log('tasks : ', res);  
+            result(null, res);
+        }
+    });   
+};
+
 Listing.getListingsByLocationAndProperty = function getListingsByLocationAndProperty(location, property, result) {
     //let query = "SELECT * FROM listings WHERE listing_type = '" + property + "' AND addr LIKE '%" + location + "%'";  //select * image
     let query = "SELECT * FROM listings WHERE listing_type = ? AND addr LIKE ?";  //select * image

@@ -7,8 +7,20 @@ exports.getAllListings = function(req, res) {
         }
 
         console.log('res', listing);
-        res.send("gooda");
+        res.send("getlistall");
         // res.render("index");
+    });
+};
+
+exports.getListings = function(req, res) {
+    Listing.getListings(req.body, function(err, listing) {
+        if(err) {
+            res.send(err);
+        }
+
+        console.log('res', listing);
+        // res.send("getListing");
+        res.render("display", {"properties" : listing, "state": ["MA", "NH"]});
     });
 };
 
@@ -17,7 +29,7 @@ exports.getListingsByLocationAndProperty = function(req, res) {
     let location = req.query.location;
     let property = req.query.property;
     
-    
+    console.log(location);
 
     Listing.getListingsByLocationAndProperty(location, property, function(err, listing) {
         if(err) {

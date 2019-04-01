@@ -1,0 +1,58 @@
+<form action="listings" method="post">
+
+    <div class="search">
+        <label for="min" id="minlabel">Min</label>
+        <label for="max" id="maxlabel">Max</label><br/>
+        <input type="number" name="min" id="min" class="price" min="1" required>
+        <input type="number" name="max" id="max" class="price" min="1" required>
+
+        <br/>
+        <div class="searchInput">
+            <label for="bedroom" id="bedroomLabel">Bedroom</label>
+            <br/>
+            <select name="bedroom" class="select" required>
+                <option value="">Number of Bedroom</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <br/>
+        
+        <div class="searchInput">
+            <label for="bathroom" id="bathroomLabel">Bathroom</label>
+            <br/>
+        
+                <select name="bathroom" class="select" required>
+                    <option value="">Number of Bathroom</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            
+        </div>
+        <br/>
+        
+        <div class="searchInput">
+
+        <label for="state" id="stateLabel">State</label>
+        <br/> 
+            <select name="state" class="select" required>
+                <% state.forEach((value) => { %>
+                    <option value= "<%= value %>" class="state"><%= value %></option>
+                <% }) %>
+            </select>
+        <br/>
+        </div>
+
+        <label for="city" id="cityLabel">City</label>
+        <br/>
+        <input type="text" name="city" id="city" class="input" required>
+        <br/>
+        <input type="submit" id="btnSearch" class="btn" value="Search" required/>
+    </div>
+</form>

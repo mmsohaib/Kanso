@@ -10,8 +10,8 @@ module.exports = function(app) {
         // })
     
     app.route('/listings')
-        .get(listings.getAllListings)
-        .post(listings.createListing);
+        .post(listings.getListings);
+        
     
     
 
@@ -29,7 +29,7 @@ module.exports = function(app) {
 
     app.route('/')
         .get((req, res) =>{
-            res.render("index");
+            res.render("index", {state: ["MA", "NH"]});
         })
     
 };
