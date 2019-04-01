@@ -10,8 +10,10 @@
 }
 
 .price{
-    width: 90px;
+    width: 89px;
     margin-bottom: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
 }
 
 #minlabel{
@@ -49,9 +51,10 @@
 }
 
 .input{
-    width: 185px;
+    width: 182px;
 
-    
+    border: 1px solid gray;
+    border-radius: 5px;
 
 }
 
@@ -59,8 +62,15 @@
     position: relative;
     margin-top: 10px;
     left: 30%;
-
+    border: 1px solid gray;
 }
+
+
+#btnSearch:hover{
+    /* border-color: blue; */
+    background-color: lightgray;
+}
+
 
 .bath{
     background-color: white;

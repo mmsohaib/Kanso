@@ -32,6 +32,11 @@ module.exports = function(app) {
             res.render("index", {state: ["MA", "NH"]});
         })
 
+    app.route('/login')
+        .get((req, res) => {
+            res.render("login");
+        });
+
     app.route('/register')
         .get((req, res) => {
             res.render("register");

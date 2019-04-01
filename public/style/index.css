@@ -1,15 +1,14 @@
 body {
-     background: url('../media/apartment5.jpg') fixed;
+     background: url('apartment5.jpg') fixed;
     background-size: cover;
 }
 
 *[role="form"] {
     max-width: 500px;
-    padding-right: 30px;
+    padding: 10px;
     margin: 0 auto;
     border-radius: 0.3em;
     background-color: #f2f2f3;
-    margin-top: 30px;
 }
 
 *[role="form"] h2{ 
@@ -21,7 +20,6 @@ body {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 3px;
-    
 }
 
 .container {
@@ -45,8 +43,6 @@ img.image{
   width: 40%;
   opacity: 0.9;
   border-radius: 0.8rem;
-  left: 28%;
-  position: relative;
 }
 
 .registerbtn:hover {
@@ -54,22 +50,14 @@ img.image{
   background-color: #0062cc;
 }
 
+.cancelbtn {
+  width: 40%;
+  font-size: 110%;
+  padding: 10px 18px;
+  border: 2px solid #0062cc;
+  color: #0062cc;
+  background-color: #f44336;
+  cursor: pointer;
+  border-radius: .8rem;
 
-.custom-select{
-  position: relative;
-  width: 69%;
-  background-color: white;; 
-  left: 15px;
-  /* width: 180px; */
-  margin: auto;
-  border: none;   
-  height: 32px;
-  border: 1px solid gray;
-  border-radius: 0;
-  color: gray;
-  opacity: .8;
-}
-
-.form-control{
-  border: 1px solid gray;
 }

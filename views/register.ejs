@@ -1,38 +1,65 @@
 <% include ./partials/header %>
 
 
-
-
-
-
-      <!-- <h1>Kanso</h1> -->
-      <!-- <div class="container"> -->
-      <form class="form-horizontal" role="form" style="margin-top: 50px;">
-         <h3 style="margin-left: 15px;"> Login </h3>
-         <div class="form-group">
-         </div>
-         <div class="form-group">
-            <label for="email" class="col-sm-3 control-label">Email</label>
-            <div class="col-sm-9">
-               <input type="email" id="email" placeholder="Email" class="form-control" name= "email" required>
+      <form class="form-horizontal" role="form">
+         <h3>Registration</h3>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                <div class="col-sm-9">
+                    <input type="text" id="firstName" placeholder="First Name" class="form-control" autofocus required>
+                </div> 
             </div>
-         </div>
-         <div class="form-group">
-            <label for="password" class="col-sm-3 control-label">Password</label>
-            <div class="col-sm-9">
-               <input type="password" id="password" placeholder="Password" class="form-control" required>
+
+            <div class="form-group">
+                <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                <div class="col-sm-9">
+                    <input type="text" id="lastName" placeholder="Last Name" class="form-control" autofocus required>
+                </div>
             </div>
-         </div>
-         <div class="form-group">
-            <div class="container" >
-               <button type="submit" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Login</button>
+
+            <div class="form-group">
+                <label for="email" class="col-sm-3 control-label">Email </label>
+                <div class="col-sm-9">
+                <input type="email" id="email" placeholder="Email" class="form-control" name= "email" required>
+                </div>
             </div>
-            <div class="container signin">
-               <p> <a href="#">Forget password?</a>.</p>
+
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-9">
+                    <input type="password" id="password" placeholder="Password" class="form-control" required>
+                </div>
             </div>
-         </div>
-         </div>
+
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Confirm Password</label>
+                <div class="col-sm-9">
+                    <input type="password" id="password" placeholder="Password" class="form-control" required>
+                </div>
+            </div>
+            <!-- Select state -->
+            <div class="form-group">
+                <label for="state" class="col-sm-3 control-label">State </label>
+                <select name="state" formControlName="state" (change)="getCityList(state.value)" class="custom-select" required>
+                    <option value="">Select State</option>
+                    <option *ngFor="let state of stateList" value="{{state._id}}">{{state.name}}</option>
+                </select>
+            </div>
+            <!-- select state -->
+            <div class="form-group">
+                <label for="state" class="col-sm-3 control-label">City </label>
+                <select name="city" formControlName="city" class="custom-select" required>
+                    <option value="">Select City</option>
+                    <option *ngFor="let city of cityList" value="{{city._id}}">{{city.name}}</option>
+                </select>
+            </div>
+            <!-- Register Button -->
+            <div class="form-group">
+                <button type="submit" class="registerbtn">Register</button>
+            </div>
+
+            <p>Already have an account? <a href="#">Sign in</a>.</p>
+
       </form>
 
 <% include ./partials/footer %>
-
