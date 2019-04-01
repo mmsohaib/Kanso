@@ -31,5 +31,10 @@ module.exports = function(app) {
         .get((req, res) =>{
             res.render("index", {state: ["MA", "NH"]});
         })
+
+    app.route('/register')
+        .get((req, res) => {
+            res.render("register");
+        });
     
 };

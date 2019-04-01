@@ -1,0 +1,38 @@
+<% include ./partials/header %>
+
+
+
+
+
+
+      <!-- <h1>Kanso</h1> -->
+      <!-- <div class="container"> -->
+      <form class="form-horizontal" role="form" style="margin-top: 50px;">
+         <h3 style="margin-left: 15px;"> Login </h3>
+         <div class="form-group">
+         </div>
+         <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-9">
+               <input type="email" id="email" placeholder="Email" class="form-control" name= "email" required>
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">Password</label>
+            <div class="col-sm-9">
+               <input type="password" id="password" placeholder="Password" class="form-control" required>
+            </div>
+         </div>
+         <div class="form-group">
+            <div class="container" >
+               <button type="submit" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Login</button>
+            </div>
+            <div class="container signin">
+               <p> <a href="#">Forget password?</a>.</p>
+            </div>
+         </div>
+         </div>
+      </form>
+
+<% include ./partials/footer %>
+
