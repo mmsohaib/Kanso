@@ -15,11 +15,12 @@
     padding: 0;
     margin-bottom: 20px;
     width: 488.5px;
+    /* border: 1px solid blue; */
 }
 
 .searchbar ul li{
     float: left;
-    
+    width: 50%;
 }
 
 .searchbar ul li a{
@@ -27,6 +28,9 @@
     text-decoration: none;
     padding: 18px 50px;
     text-transform: uppercase;
+    /* border: 1px solid green; */
+    width: 100%;
+    text-align: center;
 }
 
 

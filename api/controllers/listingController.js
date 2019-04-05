@@ -63,7 +63,8 @@ exports.readListing = function(req, res) {
         if(err) {
             res.send(err);
         }
-        res.json(listing);
+        // res.json(listing);
+        res.render("view", {listing: listing});
     });
 };
 

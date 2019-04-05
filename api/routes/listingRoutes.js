@@ -12,8 +12,7 @@ module.exports = function(app) {
     app.route('/listings')
         .post(listings.getListings);
         
-    
-    
+       
 
     app.route('/listings/:listingId')
         .get(listings.readListing)
@@ -41,5 +40,6 @@ module.exports = function(app) {
         .get((req, res) => {
             res.render("register");
         });
+    
     
 };

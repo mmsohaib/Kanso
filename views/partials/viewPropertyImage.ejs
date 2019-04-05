@@ -1,0 +1,15 @@
+
+    
+        <% listing.forEach((value, index) => { %> 
+        <% image = value.image_path.split(",") %>
+            
+            <% image.forEach((val) => { %>
+                <div class="myImageSlides">
+                    <img src="/media/<%= val %>" class="slideshow" alt="<%= val %>">
+                </div>
+            <% }) %>
+        <% }) %>
+    
+
+    <a class="prev" onclick = "plusSlides(-1)">❮</a>
+    <a class="next" onclick = "plusSlides(1)">❯</a>

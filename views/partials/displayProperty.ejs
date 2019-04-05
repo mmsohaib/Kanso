@@ -15,14 +15,12 @@
                         <p class="style">Posted on: <%= value.posted_date %></p>
                         <p class="style">By: <%= value.username %></p>
                         <a href="mailto:<%= value.email %>" style="margin-left: 20px" class="btn btn-default">Contact Owner</a>
-                        <a href="#" style="margin-left: 80px" class="btn btn-default">View More</a>
+                        <a href="listings/<%= value.listing_id %>"" style="margin-left: 80px" class="btn btn-default">View More</a>
                     </div>
 
                     <div class="picture">
                         <% image = value.image_path.split(",");%>
-                        <% image.forEach((value) => { %>
-                            <img class="propertyImage" src="/media/<%= value %>">
-                        <% }) %>
+                        <img class="propertyImage" src="/media/<%= image[0] %>">
                     </div>
                     
                 </div>

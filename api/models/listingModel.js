@@ -53,7 +53,7 @@ Listing.getAllListings = function getAllListings(result) {
 Listing.getListings = function getListings(listing, result) {
     address = "%" + listing.city + ", " + listing.state ;
     let value = [listing.min, listing.max, listing.bedroom, listing.bathroom, address];
-    let query = "SELECT numRooms, numBath, parking, addr, price, listing_type, listing_desc, posted_date, first_name, last_name, email, username, image_path  FROM listings, users WHERE users.u_id = listings.listed_by AND price BETWEEN ? AND ? AND numRooms <= ? AND numBath <= ? AND addr LIKE ?";  //select * image
+    let query = "SELECT listing_id, numRooms, numBath, parking, addr, price, listing_type, listing_desc, posted_date, first_name, last_name, email, username, image_path  FROM listings, users WHERE users.u_id = listings.listed_by AND price BETWEEN ? AND ? AND numRooms <= ? AND numBath <= ? AND addr LIKE ?";  //select * image
     console.log(query);
     console.log(value);
     sql.query(query, value, function (err, res) {
