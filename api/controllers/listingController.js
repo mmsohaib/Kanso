@@ -83,10 +83,9 @@ exports.getIndexListing = function(req, res) {
         if(err) {
             res.send(err);
         }
-        // console.log("before " + listing);
-        listing[0] = Object.assign(listing[0], {"posted_time" : getPostedTime(listing[0].posted_date)});
-        // console.log(listing);
-        console.log("are youhere");
+        listing.map(value => {
+            value = Object.assign(value, {"posted_time" : getPostedTime(value.posted_date)});
+        });
         res.render("index", {listing: listing, "state" : ["MA", "NH"]});
     });
 };

@@ -1,38 +1,41 @@
-<div class="listing">
-    <h2>Recent Posting</h2>
-    <table class="table">
-    <thead>
-        <tr>
-        <th scope="col">#</th>
-        <th scope="col">Property Type</th>
-        <th scope="col">Location</th>
-        <th scope="col">Room</th>
-        <th scope="col">Bath</th>
-        <th scope="col">Parking</th>
-        <th scope="col">Time on Kanso</th>
-        <th scope="col">Description</th>
-        <th scope="col">Price</th>
-        <th scope="col">Comparision</th>
-        <th scope="col">View</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% listing.forEach((value, key) => { %>
-            <% location = value.addr.split(",")%>
+
+    <div class="listing">
+        <h2>Recent Posting</h2>
+        <table class="table">
+        <thead>
             <tr>
-                <th scope="row"><%= key + 1 %></th>
-                <td class="article"><%= value.listing_type %></td>
-                <td class="loc"><%= location[location.length - 2] +  location[location.length - 1] %></td>
-                <td><%= value.numRooms %></td>
-                <td><%= value.numBath %></td>
-                <td><%= value.parking %></td>
-                <td><%= value.posted_time %></td>
-                <td class="article"><%= value.listing_desc.substring(0, 20) %>...</td>
-                <td><%= value.price %></td>
-                <td><input type="checkbox" name="comparision" value="<%= value.listing_id %>"/></td>
-                <td><a href="listings/<%= value.listing_id %>">View</a></td>
+            <th scope="col">#</th>
+            <th scope="col">Property Type</th>
+            <th scope="col">Location</th>
+            <th scope="col">Room</th>
+            <th scope="col">Bath</th>
+            <th scope="col">Parking</th>
+            <th scope="col">Time on Kanso</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Comparision</th>
+            <th scope="col">View</th>
             </tr>
-        <% }) %>
-    </tbody>
-    </table>
-</div>
+        </thead>
+        <tbody>
+            <% listing.forEach((value, key) => { %>
+                <% location = value.addr.split(",")%>
+                <tr>
+                    <th scope="row"><%= key + 1 %></th>
+                    <td class="article"><%= value.listing_type %></td>
+                    <td class="loc"><%= location[location.length - 2] +  location[location.length - 1] %></td>
+                    <td><%= value.numRooms %></td>
+                    <td><%= value.numBath %></td>
+                    <td><%= value.parking %></td>
+                    <td><%= value.posted_time %></td>
+                    <td class="article"><%= value.listing_desc.substring(0, 20) %>...</td>
+                    <td><%= value.price %></td>
+                    <td><input type="checkbox" class="compare" value="<%= value.listing_id %>"/></td>
+                    <td><a href="listings/<%= value.listing_id %>">View</a></td>
+                </tr>
+            <% }) %>
+        </tbody>
+        </table>
+        <input type="submit" value="Compare"  class="btn btn-primary" onClick="compare()" style="float: right" />
+    </div>
+    

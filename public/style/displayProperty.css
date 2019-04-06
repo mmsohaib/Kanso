@@ -23,7 +23,7 @@
 }
 
 .myList::after{
-    border: 2px solid pink;
+    /* border: 2px solid pink; */
     /* width: 400px; */
     display: block;
     height: 300px;

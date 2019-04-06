@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "dependencies": {
+    "alertifyjs": "^1.11.2",
     "angular": "^1.7.8",
     "angularjs": "0.0.1",
     "ejs": "^2.6.1",

@@ -1,5 +1,5 @@
 body{
-  background-color: url("../media/apartment5.jpg");
+  /* background-color: url("../media/apartment5.jpg"); */
   margin: 0;
   /* background-size: cover; */
 }
@@ -65,10 +65,10 @@ img.image{
   border-radius: .8rem;
 }
 
-.loginbtn:hover {
+/* .loginbtn:hover {
   opacity: 1;
   background-color: #0062cc;
-}
+} */
 
 .signin{
   position: relative;

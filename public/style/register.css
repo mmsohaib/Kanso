@@ -35,7 +35,7 @@ img.image{
 }
 
 .registerbtn {
-  background-color: #4CAF50;
+  background-color: rgb(87, 128, 194);
   border: 2px solid #0062cc;
   font-size: 110%;
   color: white;
@@ -49,10 +49,10 @@ img.image{
   position: relative;
 }
 
-.registerbtn:hover {
+/* .registerbtn:hover {
   opacity: 1;
   background-color: #0062cc;
-}
+} */
 
 
 .custom-select{

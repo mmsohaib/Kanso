@@ -1,5 +1,5 @@
 .clearfix{
-    border: 1px solid red;    
+    /* border: 1px solid red;     */
 }
 
 /*  
@@ -14,7 +14,7 @@
 }
 
 .infoDetail{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     
     display: inline-block;
     padding: 0px 80px;
@@ -22,17 +22,19 @@
 
 #map{
 
-    border: 5px solid purple;
+    /* border: 5px solid purple; */
     display: inline-block;
     width: 500px;
     top: 0px;
     height: 250px;
+    padding-top: 200px;
 }
 
 
 .divider{
     float: left;
     width: 50%;
-    border: 5px dashed goldenrod;
+    /* border: 5px dashed goldenrod; */
     top: 0px;
+    
 }

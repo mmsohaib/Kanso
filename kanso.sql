@@ -33,5 +33,7 @@ create table listings (
     posted_date datetime default current_timestamp,
     listing_desc varchar(300),
     image_path varchar(100),
+    lat varchar(256),
+    lng varchar(256),
     foreign key (listed_by) references homeowners(homeowner_id)
 );
