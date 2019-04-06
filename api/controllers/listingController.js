@@ -63,10 +63,23 @@ exports.readListing = function(req, res) {
         if(err) {
             res.send(err);
         }
-        // res.json(listing);
+        console.log("before " + listing);
+        listing[0] = Object.assign(listing[0], {"posted_time" : getPostedTime(listing[0].posted_date)});
+        console.log(listing);
         res.render("view", {listing: listing});
     });
 };
+
+
+function getPostedTime(postedDate){ //calculate the elapsed time from the posted date to now 
+     pd = new Date(postedDate)
+     timeDiff = Math.abs(new Date().getTime() - pd.getTime()) 
+     diffDays = Math.ceil(timeDiff / (1000 * 3600 *24)) 
+     return diffDays;
+}
+
+
+
 
 exports.updateListing = function(req, res) {
     Listing.updateById(req.params.userId, new Listing(req.body), function(err, listing) {

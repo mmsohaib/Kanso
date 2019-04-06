@@ -1,3 +1,37 @@
-.propertyDetail{
-    border: 1px solid red;
+.clearfix{
+    border: 1px solid red;    
+}
+
+/*  
+    the clearfix hack to take care of the layout flow, 
+    and that add the box-sizing property to make sure 
+    that the box doesn't break due to extra padding. 
+ */
+.clearfix::after{ 
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.infoDetail{
+    border: 2px solid blue;
+    
+    display: inline-block;
+    padding: 0px 80px;
+}
+
+#map{
+
+    border: 5px solid purple;
+    display: inline-block;
+    width: 450px;
+    top: 0px;
+    height: 250px;
+}
+
+
+.divider{
+    float: left;
+    width: 50%;
+    border: 5px dashed goldenrod;
 }

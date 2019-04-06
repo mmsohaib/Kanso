@@ -25,7 +25,8 @@ Listing.createListing = function createListing(newListing, result) {
 };
 
 Listing.getListingById = function createListing(listingId, result) {
-    sql.query("SELECT * from listings where listing_id = ?", listingId, function (err, res) {             
+    let query = "SELECT lat, lng, listing_id, numRooms, numBath, parking, addr, price, listing_type, listing_desc, posted_date, first_name, last_name, email, username, image_path  FROM listings, users WHERE users.u_id = listings.listed_by AND listing_id = ?";  //select * image
+    sql.query(query, listingId, function (err, res) {             
         if(err) {
             console.log("error: ", err);
             result(err, null);
@@ -53,7 +54,7 @@ Listing.getAllListings = function getAllListings(result) {
 Listing.getListings = function getListings(listing, result) {
     address = "%" + listing.city + ", " + listing.state ;
     let value = [listing.min, listing.max, listing.bedroom, listing.bathroom, address];
-    let query = "SELECT listing_id, numRooms, numBath, parking, addr, price, listing_type, listing_desc, posted_date, first_name, last_name, email, username, image_path  FROM listings, users WHERE users.u_id = listings.listed_by AND price BETWEEN ? AND ? AND numRooms <= ? AND numBath <= ? AND addr LIKE ?";  //select * image
+    let query = "SELECT lat, lng, listing_id, numRooms, numBath, parking, addr, price, listing_type, listing_desc, posted_date, first_name, last_name, email, username, image_path  FROM listings, users WHERE users.u_id = listings.listed_by AND price BETWEEN ? AND ? AND numRooms <= ? AND numBath <= ? AND addr LIKE ?";  //select * image
     console.log(query);
     console.log(value);
     sql.query(query, value, function (err, res) {
