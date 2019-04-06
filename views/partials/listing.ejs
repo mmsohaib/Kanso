@@ -9,7 +9,7 @@
         <th scope="col">Room</th>
         <th scope="col">Bath</th>
         <th scope="col">Parking</th>
-        <th scope="col">Posted Date</th>
+        <th scope="col">Time on Kanso</th>
         <th scope="col">Description</th>
         <th scope="col">Price</th>
         <th scope="col">Comparision</th>
@@ -17,45 +17,22 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Condo</td>
-            <td>Boston</td>
-            <td>2</td>
-            <td>1</td>
-            <td>2</td>
-            <td>03/20/19</td>
-            <td>Great location, near school and business</td>
-            <td>1500$</td>
-            <td><input type="checkbox" name="comparision"/></td>
-            <td><a href="#">View</a></td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Single Family</td>
-            <td>Lowell</td>
-            <td>3</td>
-            <td>2</td>
-            <td>2</td>
-            <td>03/21/19</td>
-            <td>Quite Area</td>
-            <td>1000$</td>
-            <td><input type="checkbox" name="comparision"/></td>
-            <td><a href="#">View</a></td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Multiple Family</td>
-            <td>New York</td>
-            <td>3</td>
-            <td>1</td>
-            <td>1</td>
-            <td>03/19/19</td>
-            <td>Restaurant nearby</td>
-            <td>2000$</td>
-            <td><input type="checkbox" name="comparision"/></td>
-            <td><a href="#">View</a></td>
-        </tr>
+        <% listing.forEach((value, key) => { %>
+            <% location = value.addr.split(",")%>
+            <tr>
+                <th scope="row"><%= key + 1 %></th>
+                <td class="article"><%= value.listing_type %></td>
+                <td class="loc"><%= location[location.length - 2] +  location[location.length - 1] %></td>
+                <td><%= value.numRooms %></td>
+                <td><%= value.numBath %></td>
+                <td><%= value.parking %></td>
+                <td><%= value.posted_time %></td>
+                <td class="article"><%= value.listing_desc.substring(0, 20) %>...</td>
+                <td><%= value.price %></td>
+                <td><input type="checkbox" name="comparision" value="<%= value.listing_id %>"/></td>
+                <td><a href="listings/<%= value.listing_id %>">View</a></td>
+            </tr>
+        <% }) %>
     </tbody>
     </table>
 </div>

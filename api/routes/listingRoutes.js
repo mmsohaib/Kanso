@@ -27,9 +27,10 @@ module.exports = function(app) {
         .put(users.updateUser);
 
     app.route('/')
-        .get((req, res) =>{
-            res.render("index", {state: ["MA", "NH"]});
-        })
+        .get(listings.getIndexListing);
+        // .get((req, res) =>{
+        //     res.render("index", {state: ["MA", "NH"]});
+        // })
 
     app.route('/login')
         .get((req, res) => {

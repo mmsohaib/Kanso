@@ -24,7 +24,7 @@ Listing.createListing = function createListing(newListing, result) {
     });           
 };
 
-Listing.getListingById = function createListing(listingId, result) {
+Listing.getListingById = function getListingById(listingId, result) {
     let query = "SELECT lat, lng, listing_id, numRooms, numBath, parking, addr, price, listing_type, listing_desc, posted_date, first_name, last_name, email, username, image_path  FROM listings, users WHERE users.u_id = listings.listed_by AND listing_id = ?";  //select * image
     sql.query(query, listingId, function (err, res) {             
         if(err) {
@@ -36,6 +36,22 @@ Listing.getListingById = function createListing(listingId, result) {
         }
     });   
 };
+
+
+Listing.getIndexListing = function getIndexListing(listingId, result) {
+    let query = "SELECT * FROM listings ORDER BY posted_date DESC LIMIT 10;";  //select * image
+    sql.query(query, listingId, function (err, res) {             
+        if(err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else {
+            result(null, res);  
+        }
+    });   
+};
+
+
 
 Listing.getAllListings = function getAllListings(result) {
     sql.query("SELECT * FROM listings", function (err, res) {

@@ -4,25 +4,17 @@
         <%- include("partials/viewPropertyImage", {listing: listing}); %>
     </div>
 
-    <% if (typeof listing !== "undefined"){ %>                
         <% listing.forEach((value) => { %>
             <div class="clearfix">
-            <!--
-                <% postedDate = new Date(value.posted_date) %>
-                <% pd = new Date(postedDate.getFullYear(), postedDate.getMonth(), postedDate.getDate())%>
-                <% timeDiff = Math.abs(new Date().getTime() - postedDate.getTime()) %>
-                <% diffDays = Math.ceil(timeDiff / (1000 * 3600 *24)) %>
-            -->
-            <%= value.posted_time %>
-            
+             
                 <div class="divider">
                     <div class="infoDetail">
                         <h3 class="address"><%= value.addr %></h3>
                         <p class="room"><%= value.numRooms %> Bedroom <%= value.numBath %> Bathroom <%= value.parking %> Parking</p> 
-                        <p class="style">Price:<%= value.price %></p> 
+                        <p class="style">Price: <%= value.price %></p> 
                         <p class="style">Type: <%= value.listing_type %></p>
                         <p class="style">Description: <%= value.listing_desc %></p>
-                        <p class="style">Posted on: <%= value.posted_date %></p>
+                        <p class="style">Day on Kanso: <%= value.posted_time %></p>
                         <p class="style">By: <%= value.username %></p>
                         <a href="mailto:<%= value.email %>" style="margin-left: 20px" class="btn btn-default">Contact Owner</a>
                     </div>
@@ -35,6 +27,5 @@
                 </div>
             </div>
         <% }) %>
-    <% } %>
 </div>
 <% include ./partials/footer %>

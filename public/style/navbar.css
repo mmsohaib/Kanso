@@ -65,7 +65,8 @@ body{
 }
 
 .navbar{
-    background-image: url('../media/banner.jpg');
+    /* background-image: url('../media/banner.jpg'); */
+    background-color: rgb(87, 128, 194);
 }
 
 #logo img{

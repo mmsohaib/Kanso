@@ -1,3 +1,11 @@
 .listing{
     padding: 50px;
 }
+
+.article::first-letter{
+    text-transform: capitalize;
+}
+
+.loc{
+    text-transform: capitalize;
+}

@@ -78,7 +78,18 @@ function getPostedTime(postedDate){ //calculate the elapsed time from the posted
      return diffDays;
 }
 
-
+exports.getIndexListing = function(req, res) {
+    Listing.getIndexListing(req.params.listingId, function(err, listing) {
+        if(err) {
+            res.send(err);
+        }
+        // console.log("before " + listing);
+        listing[0] = Object.assign(listing[0], {"posted_time" : getPostedTime(listing[0].posted_date)});
+        // console.log(listing);
+        console.log("are youhere");
+        res.render("index", {listing: listing, "state" : ["MA", "NH"]});
+    });
+};
 
 
 exports.updateListing = function(req, res) {
@@ -98,3 +109,4 @@ exports.deleteListing = function(req, res) {
         res.json({ message: 'Listing successfully deleted' });
     });
 };
+
