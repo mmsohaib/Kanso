@@ -1,4 +1,5 @@
 var Listing = require('../models/listingModel.js');
+var geocode = require('../../public/script/map.js');
 
 exports.getAllListings = function(req, res) {
     Listing.getAllListings(function(err, listing) {
@@ -17,7 +18,7 @@ exports.getListings = function(req, res) {
         if(err) {
             res.send(err);
         }
-
+        
         console.log('res', listing);
         // res.send("getListing");
         res.render("display", {"properties" : listing, "state": ["MA", "NH"]});
@@ -44,19 +45,85 @@ exports.getListingsByLocationAndProperty = function(req, res) {
 
 
 exports.createListing = function(req, res) {
-    var newListing = new Listing(req.body);
-    if(!newListing.listed_by){
-        res.status(400).send({ error:true, message: 'Please provide listing' });
-    }
-    else{
-        Listing.createListing(newListing, function(err, listing) {
-            if(err) {
-                res.send(err);
+    let address = req.body.street + " " + req.body.city + ", " + req.body.state;
+    let listing = {
+                listed_by : req.body.listed_by, 
+                addr : address, 
+                listing_type : req.body.type,
+                numRooms : req.body.room,
+                numBath : req.body.bath,
+                parking : req.body.parking,
+                price : req.body.price,
+                listing_desc : req.body.description,
+                image_path: req.body.image,
+                lat : req.body.lat,
+                lng : req.body.lng
             }
-            res.json(listing);
-        });
-    }
+
+            
+    var newListing = new Listing(listing);
+    console.log(newListing);
+    console.log(req.body);
+
+    // if(!newListing.listed_by){
+    //     res.status(400).send({ error:true, message: 'Please provide listing' });
+    // }
+    // else{
+    //     Listing.createListing(newListing, function(err, listing) {
+    //         if(err) {
+    //             res.send(err);
+    //         }
+    //         res.json(listing);
+    //     });
+    // }
 };
+
+
+function initMap(address) {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 8,
+      center: {lat: -34.397, lng: 150.644}
+    });
+    var geocoder = new google.maps.Geocoder();
+  
+    // document.getElementById('submit').addEventListener('click', function() {
+      geocodeAddress(geocoder, address, map);
+    // });
+  }
+  
+  function geocodeAddress(geocoder, address, resultsMap) {
+    // var address = document.getElementById('address').value;
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === 'OK') {
+        console.log("this is gecoding");
+        console.log(results);
+  
+        resultsMap.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+
+
+
+
+
+
+function getLatLng(address){
+    // var geocoder = new google.maps.Geocoder();
+    // geocoder.geocode( { 'address': address}, function(results, status) {
+
+        
+    //         var lat = results[0].geometry.location.latitude;
+    //         var lng = results[0].geometry.location.longitude;
+    //         console.log("lat is " + lat + " lng is " + lng);
+    // })        
+}
 
 exports.readListing = function(req, res) {
     Listing.getListingById(req.params.listingId, function(err, listing) {

@@ -22,6 +22,12 @@ module.exports = function(app) {
     app.route('/users/')
         .post(users.createUser);
 
+    app.route('/posting')
+        .get((req, res) =>{
+            res.render("posting");
+        })
+        .post(listings.createListing);
+
     app.route('/users/:userId')
         .get(users.getUserById)
         .put(users.updateUser);

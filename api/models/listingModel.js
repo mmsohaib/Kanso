@@ -8,7 +8,10 @@ var Listing = function(listing){
     this.numBath = listing.numBath;
     this.parking = listing.parking;
     this.price = listing.price;
-    this.listing_desc = listing.listing_desc
+    this.listing_desc = listing.listing_desc;
+    this.image_path = listing.image_path;
+    this.lat = listing.lat;
+    this.lng = listing.lng;
 };
 
 Listing.createListing = function createListing(newListing, result) {    
