@@ -17,32 +17,21 @@ User.createUser = function createUser(newUser, result) {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorCode + ":" + errorMessage)
+        result(err, null);
+        return;
     });
-
-    var user = firebase.auth().currentUser;
-    //while(!user){
-    //    user = firebase.auth().currentUser;
-    //}
-
-    if (user) {
-        console.log(user.uid);
-        newUser.id = user.uid;
-      } else {
-        console.log("error");
-      }
-    
-    // var query = "INSERT INTO users (u_id, first_name, last_name, email, username, u_state, u_city) VALUES ?";
-    // var values = [newUser.id, newUser.firstName, newUser.lastName, newUser.email, newUser.state, newUser.city]
-    // sql.query(query, values, newUser, function (err, res) { 
-    //     if(err) {
-    //         console.log("error: ", err);
-    //         result(err, null);
-    //     }
-    //     else {
-    //         console.log(res.insertId);
-    //         result(null, res.insertId);
-    //     }
-    // });           
+    var query = "INSERT INTO users (first_name, last_name, email, u_state, u_city) VALUES (?)   ";
+    var values = [newUser.firstName, newUser.lastName, newUser.email, newUser.state, newUser.city]
+    sql.query(query, [values], function (err, res) { 
+        if(err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else {
+            console.log(res.insertId);
+            result(null, res.insertId);
+        }
+    });           
 };
 
 User.login = function login(email, password, result) {

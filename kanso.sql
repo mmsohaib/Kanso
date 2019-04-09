@@ -12,16 +12,6 @@ create table users (
     u_city varchar(20) not null unique
 );
 
-create table homeowners (
-    homeowner_id int primary key,
-    foreign key (homeowner_id) references users(u_id)
-);
-
-create table searchers (
-    searcher_id int primary key,
-    foreign key (searcher_id) references users(u_id)
-);
-
 create table listings (
     listing_id int primary key,
     listed_by int,
@@ -36,5 +26,5 @@ create table listings (
     image_path varchar(100),
     lat varchar(256),
     lng varchar(256),
-    foreign key (listed_by) references homeowners(homeowner_id)
+    foreign key (listed_by) references users(u_id)
 );
