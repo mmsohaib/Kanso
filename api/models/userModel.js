@@ -1,24 +1,59 @@
 var sql = require('./db.js');
+var firebase = require("./firebase.js");
 
 var User = function(user){
-    this.first_name = user.first_name;
-    this.last_name = user.last_name;
+    this.id = user.id;
+    this.firstName = user.firstName;
+    this.lastName = user.lastName;
     this.email = user.email;
-    this.username = user.username;
-}
-
-User.createUser = function createUser(newUser, result) {    
-    sql.query("INSERT INTO users set ?", newUser, function (err, res) { 
-        if(err) {
-            console.log("error: ", err);
-            result(err, null);
-        }
-        else {
-            console.log(res.insertId);
-            result(null, res.insertId);
-        }
-    });           
+    this.password = user.password;
+    this.state = user.state;
+    this.city = user.city;
 };
+
+User.createUser = function createUser(newUser, result) {
+    firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode + ":" + errorMessage)
+    });
+
+    var user = firebase.auth().currentUser;
+    //while(!user){
+    //    user = firebase.auth().currentUser;
+    //}
+
+    if (user) {
+        console.log(user.uid);
+        newUser.id = user.uid;
+      } else {
+        console.log("error");
+      }
+    
+    // var query = "INSERT INTO users (u_id, first_name, last_name, email, username, u_state, u_city) VALUES ?";
+    // var values = [newUser.id, newUser.firstName, newUser.lastName, newUser.email, newUser.state, newUser.city]
+    // sql.query(query, values, newUser, function (err, res) { 
+    //     if(err) {
+    //         console.log("error: ", err);
+    //         result(err, null);
+    //     }
+    //     else {
+    //         console.log(res.insertId);
+    //         result(null, res.insertId);
+    //     }
+    // });           
+};
+
+User.login = function login(email, password, result) {
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+        result(errorCode + " : " + errorMessage, null);
+      });
+}
 
 User.getUserById = function getUserById(userId, result) {
     sql.query("SELECT * from users where u_id = ?", userId, function (err, res) {             

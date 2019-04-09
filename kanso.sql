@@ -8,7 +8,8 @@ create table users (
     first_name varchar(15) not null,
     last_name varchar(15) not null,
     email varchar(30) not null unique,
-    username varchar(20) not null unique
+    u_state varchar(20) not null unique,
+    u_city varchar(20) not null unique
 );
 
 create table homeowners (

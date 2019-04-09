@@ -41,12 +41,14 @@ module.exports = function(app) {
     app.route('/login')
         .get((req, res) => {
             res.render("login");
-        });
+        })
+        .post(users.login);
 
     app.route('/register')
         .get((req, res) => {
             res.render("register");
-        });
+        })
+        .post(users.createUser);
     
     
 };
