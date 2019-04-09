@@ -15,11 +15,11 @@ exports.createUser = function(req, res) {
         res.status(400).send({ error:true, message: 'Please provide user' });
     }
     else{
-        User.createUser(newUser, function(err, listing) {
+        User.createUser(newUser, function(err, user) {
             if(err) {
                 res.send(err);
             }
-            res.json(listing);
+            res.json(user);
         });
     }
 };
